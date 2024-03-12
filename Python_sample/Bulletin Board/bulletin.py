@@ -1,8 +1,8 @@
 def enter_evaluation():
     while True:
         print("Please enter your rating from 1 to 5")
-        point = get_user_input()
-        if point <= 5:
+        point = get_rating_input()
+        if 1 <= point <= 5:
             print("Please enter your comment")
             comment = input()
             post = f"Point: {point} Comment: {comment}"
@@ -12,12 +12,19 @@ def enter_evaluation():
         else:
             print("Please enter a number from 1 to 5")
 
-
 def check_results():
     print("Results so far")
     with open("data.txt", "r") as read_file:
         print(read_file.read())
 
+def get_rating_input():
+    while True:
+        num = input()
+        if num.isdecimal():
+            num = int(num)
+            return num
+        else:
+            print("Please enter the rating points as numbers")
 
 def get_user_input():
     while True:
@@ -30,7 +37,6 @@ def get_user_input():
                 print("Please enter from 1 to 3")
         else:
             print("Please enter from 1 to 3")
-
 
 def main():
     while True:
@@ -47,7 +53,6 @@ def main():
         elif num == 3:
             print("Exit")
             break
-
 
 if __name__ == "__main__":
     main()
